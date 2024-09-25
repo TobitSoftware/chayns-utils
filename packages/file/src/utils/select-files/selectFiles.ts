@@ -23,8 +23,6 @@ export const selectFiles = ({
 
         document.body.appendChild(input);
 
-        console.log(input);
-
         input.addEventListener('change', (event) => {
             document.body.removeChild(input);
             const target = event.target as HTMLInputElement;
