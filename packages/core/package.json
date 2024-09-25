@@ -19,6 +19,7 @@
     "main": "lib/cjs/index.js",
     "module": "lib/esm/index.js",
     "types": "lib/types/index.d.ts",
+    "type": "module",
     "exports": {
         ".": {
             "require": "./lib/cjs/index.js",
@@ -39,10 +40,15 @@
     },
     "scripts": {
         "build": "npm run build:cjs && npm run build:esm && npm run build:types",
-        "build:types": "tsc",
         "build:cjs": "cross-env NODE_ENV=cjs babel src --out-dir lib/cjs --extensions=.ts,.tsx --source-maps --ignore=src/stories",
         "build:esm": "cross-env NODE_ENV=esm babel src --out-dir lib/esm --extensions=.ts,.tsx --source-maps --ignore=src/stories",
-        "prepublishOnly": "npm run build"
+        "build:types": "tsc",
+        "dev": "npm link && npm run watch",
+        "prepublishOnly": "npm run build",
+        "watch": "concurrently \"npm run watch:cjs\" \"npm run watch:esm\" \"npm run watch:types\"",
+        "watch:cjs": "npm run build:cjs -- --watch",
+        "watch:esm": "npm run build:esm -- --watch",
+        "watch:types": "npm run build:types -- -w"
     },
     "bugs": {
         "url": "https://github.com/TobitSoftware/chayns-components/issues"
@@ -51,23 +57,19 @@
         "@babel/cli": "^7.25.6",
         "@babel/core": "^7.25.2",
         "@babel/preset-env": "^7.25.4",
-        "@babel/preset-react": "^7.24.7",
         "@babel/preset-typescript": "^7.24.7",
         "@types/react": "^18.3.6",
-        "@types/react-dom": "^18.3.0",
         "babel-loader": "^9.2.1",
+        "concurrently": "^9.0.1",
         "cross-env": "^7.0.3",
+        "ts-node": "^10.9.2",
         "lerna": "^8.1.8",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
         "typescript": "^5.6.2"
     },
     "dependencies": {
     },
     "peerDependencies": {
-        "chayns-api": ">=1.0.73",
-        "react": ">=16.14.0",
-        "react-dom": ">=16.14.0"
+        "chayns-api": ">=1.0.73"
     },
     "publishConfig": {
         "access": "public"
