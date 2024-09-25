@@ -1,20 +1,20 @@
-import {getAccessToken, getUser, setWaitCursor} from 'chayns-api';
-import {RequestOptions, RequestResult} from "../../types/request";
+import { getAccessToken, getUser, setWaitCursor } from 'chayns-api';
+import { RequestOptions, RequestResult } from '../../types/request';
 
 export const request = async <Data = null, Body = null>({
-                                                            accessToken,
-                                                            auth = true,
-                                                            body,
-                                                            contentType = 'application/json',
-                                                            method,
-                                                            route = '',
-                                                            showWaitCursor = false,
-                                                            url,
-                                                            waitCursorText,
-                                                        }: RequestOptions<Body>): Promise<RequestResult<Data>> => {
+    accessToken,
+    auth = true,
+    body,
+    contentType = 'application/json',
+    method,
+    route = '',
+    showWaitCursor = false,
+    url,
+    waitCursorText,
+}: RequestOptions<Body>): Promise<RequestResult<Data>> => {
     const headers: HeadersInit = {};
 
-    const user = getUser()
+    const user = getUser();
 
     const isAuthenticated = !!user?.personId;
 
@@ -49,7 +49,7 @@ export const request = async <Data = null, Body = null>({
     };
 
     if (showWaitCursor) {
-        void setWaitCursor({text: waitCursorText, isEnabled: true})
+        void setWaitCursor({ text: waitCursorText, isEnabled: true });
     }
 
     const requestStart: number = Date.now();
@@ -107,7 +107,7 @@ export const request = async <Data = null, Body = null>({
     }
 
     if (showWaitCursor) {
-        void setWaitCursor({isEnabled: false})
+        void setWaitCursor({ isEnabled: false });
     }
 
     return result;
