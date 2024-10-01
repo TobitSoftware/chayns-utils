@@ -1,0 +1,60 @@
+{
+  "name": "chayns-utils",
+  "version": "1.0.0",
+  "description": "A set of beautiful util functions for developing your own applications with chayns.",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "lerna:version": "lerna version --no-push",
+    "lerna:build": "lerna run build",
+    "lerna:dev": "lerna run dev",
+    "prepare": "husky install",
+    "upgrade:minor": "lerna exec -- ncu -u -t minor",
+    "upgrade": "lerna exec -- ncu -u"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "organize-imports-cli",
+      "prettier --write"
+    ],
+    "*.{css,html,json,md,scss}": "prettier --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobitSoftware/chayns-components.git"
+  },
+  "keywords": [
+    "chayns",
+    "utils"
+  ],
+  "author": "Tobit.Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TobitSoftware/chayns-utils/issues"
+  },
+  "homepage": "https://github.com/TobitSoftware/chayns-utils#readme",
+  "browserslist": [
+    ">0.5%",
+    "not dead",
+    "not op_mini all",
+    "not IE 11"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/preset-typescript": "^7.24.7",
+    "@chayns-toolkit/eslint-config": "^2.0.2",
+    "@types/node": "^22.5.5",
+    "babel-loader": "^9.1.3",
+    "eslint": "^8.57.0",
+    "husky": "^8.0.3",
+    "lerna": "^8.1.8",
+    "organize-imports-cli": "^0.10.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
+  }
+}
