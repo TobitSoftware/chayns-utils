@@ -1,6 +1,7 @@
 import { getSite, getUser } from 'chayns-api';
 import { request } from '@chayns-utils/core';
 
+// Request URLs
 const IMAGE_SERVICE_API_V3_URL = 'https://cube.tobit.cloud/image-service/v3/Images';
 const IMAGE_RESIZER_API_URL = 'https://cube.tobit.cloud/image-resizer-backend/api/v1.0/image';
 
