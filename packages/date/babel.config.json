@@ -1,0 +1,31 @@
+{
+    "env": {
+        "esm": {
+            "sourceType": "unambiguous",
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "modules": false
+                    }
+                ],
+                "@babel/preset-typescript"
+            ],
+            "plugins": []
+        },
+        "cjs": {
+            "sourceType": "unambiguous",
+            "presets": [
+                [
+                    "@babel/preset-env",
+                    {
+                        "targets": { "node": 16 },
+                        "modules": "commonjs"
+                    }
+                ],
+                "@babel/preset-typescript"
+            ],
+            "plugins": []
+        }
+    }
+}
